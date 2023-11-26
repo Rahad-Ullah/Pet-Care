@@ -12,9 +12,9 @@ export default {
 
           secondary: "#ec4899",
 
-          accent: "#ffffff",
+          accent: "#151515",
 
-          neutral: "#ffffff",
+          neutral: "#151515",
 
           "base-100": "#ffffff",
 
