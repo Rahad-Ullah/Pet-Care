@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import logo from "../../../../public/logo_petcare.png"
+import logo from "../../../assets/logo_petcare.png"
 
 const Navbar = () => {
     const links = <>
-        <li><NavLink to={'/'} className={({isActive}) => isActive ? 'text-primary' : 'text-neutral'}>Home</NavLink></li>
-        <li><NavLink to={'/pet-listing'} className={({isActive}) => isActive ? 'text-[#EEFF25]' : 'text-neutral'}>Pet Listing</NavLink></li>
-        <li><NavLink to={'/donation'} className={({isActive}) => isActive ? 'text-[#EEFF25]' : 'text-neutral'}>Donation Campaigns</NavLink></li>
-        <li><NavLink to={'/auth/sign-up'} className={({isActive}) => isActive ? 'text-[#EEFF25]' : 'text-neutral'}>Register</NavLink></li>
+        <li><NavLink to={'/'} className={({isActive}) => isActive ? 'text-primary' : 'text-black'}>Home</NavLink></li>
+        <li><NavLink to={'/pet-listing'} className={({isActive}) => isActive ? 'text-[#EEFF25]' : 'text-black'}>Pet Listing</NavLink></li>
+        <li><NavLink to={'/donation'} className={({isActive}) => isActive ? 'text-[#EEFF25]' : 'text-black'}>Donation Campaigns</NavLink></li>
+        <li><NavLink to={'/auth/sign-up'} className={({isActive}) => isActive ? 'text-[#EEFF25]' : 'text-black'}>Register</NavLink></li>
         {/* {
             user ? 
             <li><NavLink onClick={handleLogout} className={({isActive}) => isActive ? 'text-red-400' : 'text-white'}>Logout</NavLink></li>
