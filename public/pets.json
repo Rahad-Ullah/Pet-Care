@@ -1,0 +1,111 @@
+[
+    {
+      "name": "Buddy",
+      "image": "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg",
+      "age": 3,
+      "category": "Dog",
+      "location": "Cityville",
+      "short_description": "Friendly golden retriever looking for a loving home.",
+      "long_description": "Buddy is a playful and affectionate golden retriever. He loves long walks, cuddles, and is great with children. Buddy is fully vaccinated and house-trained.",
+      "adopted": false,
+      "adoption_date": "2023-11-26",
+      "adoption_time": "15:30:00"
+    },
+    {
+      "name": "Whiskers",
+      "image": "https://cdn.pixabay.com/photo/2017/11/14/13/06/kitty-2948404_1280.jpg",
+      "age": 2,
+      "category": "Cat",
+      "location": "Suburbia",
+      "short_description": "Adorable tabby cat with a gentle disposition.",
+      "long_description": "Whiskers is a sweet tabby cat who enjoys lounging in the sun and playing with feather toys. She is spayed, litter-trained, and has a calm demeanor.",
+      "adopted": false,
+      "adoption_date": "2023-11-27",
+      "adoption_time": "14:45:00"
+    },
+    {
+      "name": "Rocky",
+      "image": "https://cdn.pixabay.com/photo/2014/06/21/08/43/rabbit-373691_1280.jpg",
+      "age": 1,
+      "category": "Rabbit",
+      "location": "Greenside",
+      "short_description": "Energetic bunny seeking a spacious home.",
+      "long_description": "Rocky is a lively rabbit who loves to hop around and explore. He is litter-trained and enjoys a mix of fresh veggies. Rocky is looking for a home with plenty of space to play.",
+      "adopted": false,
+      "adoption_date": "2023-11-28",
+      "adoption_time": "11:15:00"
+    },
+    {
+      "name": "Mittens",
+      "image": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",
+      "age": 4,
+      "category": "Cat",
+      "location": "Downtown",
+      "short_description": "Playful black and white cat ready for adoption.",
+      "long_description": "Mittens is a charming black and white cat with a playful spirit. She is spayed, microchipped, and loves interactive toys. Mittens is looking for a family that will give her plenty of attention.",
+      "adopted": false,
+      "adoption_date": "2023-11-29",
+      "adoption_time": "16:00:00"
+    },
+    {
+      "name": "Max",
+      "image": "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg",
+      "age": 5,
+      "category": "Dog",
+      "location": "Countryside",
+      "short_description": "Loyal German Shepherd in search of a forever home.",
+      "long_description": "Max is a well-trained and loyal German Shepherd. He is good with basic commands, walks well on a leash, and is protective of his loved ones. Max is looking for an experienced dog owner.",
+      "adopted": false,
+      "adoption_date": "2023-11-30",
+      "adoption_time": "13:20:00"
+    },
+    {
+      "name": "Sunny",
+      "image": "https://cdn.pixabay.com/photo/2019/02/07/21/08/animals-3982182_1280.jpg",
+      "age": 2,
+      "category": "Bird",
+      "location": "Skyview",
+      "short_description": "Colorful parrot with a vibrant personality.",
+      "long_description": "Sunny is a sociable and talkative parrot with a stunning array of colors. He enjoys mimicking sounds and interacting with his human friends. Sunny comes with a spacious cage and toys.",
+      "adopted": false,
+      "adoption_date": "2023-12-01",
+      "adoption_time": "10:10:00"
+    },
+    {
+      "name": "Luna",
+      "image": "https://cdn.pixabay.com/photo/2016/01/29/20/54/dog-1168663_1280.jpg",
+      "age": 1,
+      "category": "Dog",
+      "location": "Harborfront",
+      "short_description": "Playful and affectionate Labrador mix seeking a loving family.",
+      "long_description": "Luna is a cheerful Labrador mix with a love for playtime and belly rubs. She is great with kids, knows basic commands, and is up-to-date on vaccinations. Luna is ready to bring joy to her forever home.",
+      "adopted": false,
+      "adoption_date": "2023-12-02",
+      "adoption_time": "12:45:00"
+    },
+    {
+      "name": "Nibbles",
+      "image": "https://cdn.pixabay.com/photo/2020/05/01/02/26/hamster-5115246_1280.jpg",
+      "age": 6,
+      "category": "Hamster",
+      "location": "Riverside",
+      "short_description": "Tiny hamster with a big personality.",
+      "long_description": "Nibbles is a cute and tiny hamster who loves running on his wheel and munching on fresh veggies. He comes with a comfortable cage and is easy to care for. Nibbles is looking for a quiet home to call his own.",
+      "adopted": false,
+      "adoption_date": "2023-12-03",
+      "adoption_time": "14:30:00"
+    },
+    {
+      "name": "Oliver",
+      "image": "https://cdn.pixabay.com/photo/2018/03/26/02/05/cat-3261420_1280.jpg",
+      "age": 3,
+      "category": "Cat",
+      "location": "Meadowside",
+      "short_description": "Gentle and affectionate orange tabby in need of a loving family.",
+      "long_description": "Oliver is a calm and loving orange tabby cat who enjoys lounging on sunny windowsills. He is neutered, litter-trained, and would make a wonderful addition to a home that appreciates feline companionship.",
+      "adopted": false,
+      "adoption_date": "2023-12-04",
+      "adoption_time": "16:15:00"
+    }
+  ]
+  
