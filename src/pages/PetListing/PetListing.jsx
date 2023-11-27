@@ -1,24 +1,41 @@
-import { useQuery } from "@tanstack/react-query";
+
+
 import SectionTitle from "../../components/SectionTitle";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import PetListingCard from "./PetListingCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const PetListing = () => {
     const [category, setCategory] = useState('Cat')
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(false)
-    console.log(category, search)
-    
+    const [pets, setPets] = useState([]);
+    const [hasMore, setHasMore] = useState(true);
     const axiosPublic = useAxiosPublic()
-    const {data: pets=[], refetch} = useQuery({
-        queryKey: ['pets', category, search],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/pets?category=${category}&search=${search}`)
+
+    useEffect(() => {
+        axiosPublic
+          .get(`/pets?category=${category}&search=${search}`)
+          .then((res) => {
+            setPets(res.data)
             setLoading(false)
-            return res.data;
-        }
-    })
+          })
+          .catch((err) => console.log(err));
+      }, [category, search]);
+
+
+      const fetchMoreData = () => {
+        axiosPublic
+          .get(`/pets?category=${category}&search=${search}`)
+          .then((res) => {
+            setPets((prevItems) => [...prevItems, ...res.data]);
+    
+            res.data.length > 0 ? setHasMore(true) : setHasMore(false);
+          })
+          .catch((err) => console.log(err));
+      };
+    
     console.log(pets)
 
     const handleSearch = e => {
@@ -27,7 +44,6 @@ const PetListing = () => {
         const category = e.target.category.value;
         setCategory(category)
         setSearch(searchText)
-        refetch()
         setLoading(true)
     }
     
@@ -42,7 +58,7 @@ const PetListing = () => {
                 <form onSubmit={handleSearch} className="join mt-6">
                 <div>
                     <div>
-                    <input className="input input-bordered join-item" 
+                    <input className="input input-bordered join-item w-full" 
                     name="search"
                     placeholder="Search here..."/>
                     </div>
@@ -57,20 +73,31 @@ const PetListing = () => {
                     <option value={'Bird'}>Bird</option>
                 </select>
                 <div className="indicator">
-                    <button className="btn btn-primary text-base px-8 join-item">Search</button>
+                    <button className="btn btn-primary text-base md:px-8 join-item">Search</button>
                 </div>
                 </form>
             </div>
             {
                 loading ? <div className="py-32 mx-auto text-center"><span className="loading loading-spinner loading-lg text-primary"></span></div>
-                : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-14">
+                : <InfiniteScroll
+                dataLength={pets.length}
+                next={fetchMoreData}
+                hasMore={hasMore}
+                loader={<div className="py-32 mx-auto text-center text-lg md:text-2xl font-semibold">Loading...</div>}
+                >
+                {
+                    pets.length > 0 ?
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-14">
                     {
-                        pets.map(pet => <PetListingCard
-                            key={pet._id}
+                        pets.map((pet, index) => <PetListingCard
+                            key={index}
                             pet={pet}
                         ></PetListingCard>)
                     }
-                </div>
+                    </div>
+                    : <div className="py-32 mx-auto text-center text-info text-xl md:text-3xl font-semibold">No Data Found</div>
+                }
+                </InfiniteScroll>
             }
         </div>
     );
