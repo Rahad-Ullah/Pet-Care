@@ -1,0 +1,7 @@
+.sidemenu li{
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.sidemenu li:hover{
+    background-color: #f31b4a0d;
+}
