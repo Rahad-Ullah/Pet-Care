@@ -5,6 +5,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import AuthLayout from "../layouts/AuthLayout.jsx/AuthLayout";
 import PetListing from "../pages/PetListing/PetListing";
+import PetDetails from "../pages/PetDetails/PetDetails";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         {
           path: 'pet-listing',
           element: <PetListing></PetListing>
+        },
+        {
+          path: 'pet-details/:id',
+          element: <PetDetails></PetDetails>
         }
       ]
     },

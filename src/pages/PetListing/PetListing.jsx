@@ -15,8 +15,7 @@ const PetListing = () => {
     const axiosPublic = useAxiosPublic()
 
     useEffect(() => {
-        axiosPublic
-          .get(`/pets?category=${category}&search=${search}`)
+        axiosPublic.get(`/pets?category=${category}&search=${search}`)
           .then((res) => {
             setPets(res.data)
             setLoading(false)
