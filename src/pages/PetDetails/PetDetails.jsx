@@ -75,8 +75,8 @@ const PetDetails = () => {
             <div className="py-16 w-5/6 mx-auto max-w-screen-xl">
                 <span onClick={() => navigate(-1)} className="inline-flex items-center gap-1 text-xl font-bold mb-8 link link-hover"><IoIosArrowBack></IoIosArrowBack>
                 Back</span>
-                <div className="flex justify-between gap-12 mb-12">
-                    <figure className="w-6/12">
+                <div className="flex flex-col lg:flex-row justify-between gap-12 mb-12">
+                    <figure className="w-full lg:w-6/12">
                         <img src={image} alt="" className="rounded-xl"/>
                     </figure>
                     <div className="flex-1 space-y-1 bg-base-100 shadow-lg p-8 pt-0 rounded-xl">
@@ -94,12 +94,12 @@ const PetDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between gap-20">
+                <div className="flex flex-col lg:flex-row justify-between gap-20">
                     <div className="max-w-screen-sm">
                         <h3 className="text-2xl font-bold">{name} description</h3>
                         <p className="mt-4 text-info">{long_description}</p>
                     </div>
-                    <div className="flex-1 max-w-sm bg-base-100 p-10 rounded-xl shadow-lg">
+                    <div className="flex-1 lg:max-w-sm bg-base-100 p-10 rounded-xl shadow-lg">
                         <button onClick={()=>document.getElementById('my_modal_5').showModal()} className="btn btn-primary text-base w-full">Apply to adopt</button>
                     </div>
                 </div>

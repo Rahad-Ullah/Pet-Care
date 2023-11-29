@@ -3,47 +3,107 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import DashboardBack from "../../../components/DashboardBack";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import CustomSelect from "../../../components/CustomSelect";
+import useAuth from "../../../hooks/useAuth";
+import useDate from "../../../hooks/useDate";
+import useCurrentTime from "../../../hooks/useCurrentTime";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
 
 const AddPet = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
+    const {user} = useAuth()
+    const currentDate = useDate()
+    const currentTime = useCurrentTime()
+
+    const options = [
+        {value: 'Cat', label: 'Cat'},
+        {value: 'Dog', label: 'Dog'},
+        {value: 'Rabbit', label: 'Rabbit'},
+        {value: 'Bird', label: 'Bird'},
+    ]
     
     const formik = useFormik({
         initialValues: {
           name: '',
-          email: '',
-          phone: '',
-          address: '',
+          age: '',
+          category: '',
+          location: '',
+          file: '',
+          short_description: '',
+          long_description: '',
         },
         validationSchema: Yup.object({
-          phone: Yup.string()
-            .min(8, 'Must be 8 characters or more')
-            .max(15, 'Must be 15 characters or less')
-            .required('Phone is required'),
-          address: Yup.string()
+          name: Yup.string()
             .min(3, 'Must be 3 characters or more')
-            .max(30, 'Must be 30 characters or less')
-            .required('Address is required'),
+            .max(15, 'Must be 15 characters or less')
+            .required('Name is required'),
+          age: Yup.string()
+            .required('Age is required'),
+          category: Yup.string()
+            .required('Category is required'),
+          location: Yup.string()
+            .required('Location is required'),
+          file: Yup.string()
+            .required('Image is required'),
+          short_description: Yup.string()
+            .required('Short description is required'),
+          long_description: Yup.string()
+            .required('Long description is required'),
+            
         }),
-        onSubmit: values => {
-            const requestData = {
-                name: values.name,
-                category: values.category,
-                image: values.image,
-                adopterName: values.user?.displayName,
-                adopterEmail: values.user?.email,
-                phone: values.values.phone,
-                address: values.values.address,
-                requestDate: values.today, 
-            }
-            axiosPublic.post(`/adoption`, requestData)
-            .then(res => {
-                if(res.data.message === 'success'){
-                    toast.success('Request saved');
-                } else{
-                    toast.error('Request already taken');
+        onSubmit: async (values) => {
+            const imageFile = {image: values.file}
+            const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
                 }
-            })
+            });
+            if(res.data.success){
+                const petData = {
+                    name: values.name,
+                    age: values.age,
+                    category: values.category,
+                    location: values.location,
+                    image: res.data?.data?.display_url,
+                    short_description: values.short_description,
+                    long_description: values.long_description,
+                    adoption_date: currentDate,
+                    adoption_time: currentTime,
+                    adopted: false,
+                    userName: user.displayName,
+                    userEmail: user.email
+
+                }
+                console.log(petData);
+                axiosSecure.post(`/pets`, petData)
+                .then(res => {
+                    if(res.data.insertedId){
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Pet data has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+                    } else{
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Failed to save pet data",
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+                    }
+                })
+            }
+         
         },
       });
     
@@ -51,11 +111,11 @@ const AddPet = () => {
         <div>
             <div>
                 <DashboardBack></DashboardBack>
-                <h1 className="font-bold text-info text-2xl mb-10">Add a pet</h1>
             </div>
-            <div className="bg-base-100 shadow-sm p-6 rounded-lg">
-            <form onSubmit={formik.handleSubmit} className="space-y-1">
-                <div className="">
+            <div className="bg-base-100 shadow-sm p-8 rounded-lg">
+                <h1 className="font-bold text-info text-3xl my-10 mt-6 text-center">Add a pet</h1>
+            <form onSubmit={formik.handleSubmit} className="space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-3">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>
@@ -94,13 +154,28 @@ const AddPet = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
+                            <span className="label-text">Category</span>
+                        </label>
+                        <CustomSelect
+                            options={options}
+                            value={formik.values.category}
+                            onChange={value => formik.setFieldValue('category', value.value)}
+                            className={'py-1'}
+                        />
+                        {formik.touched.category && formik.errors.category ? (
+                        <div className="text-red-500 text-sm mt-1">{formik.errors.category}</div>
+                        ) : null}
+                    </div>
+                    
+                    <div className="form-control">
+                        <label className="label">
                             <span className="label-text">Location</span>
                         </label>
                         <input
                         id="location"
                         name="location"
                         type="text"
-                        placeholder="Your location" 
+                        placeholder="Your pet location" 
                         className="input input-bordered"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -112,25 +187,60 @@ const AddPet = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Address</span>
+                            <span className="label-text">Image</span>
                         </label>
                         <input
-                        id="address"
-                        name="address"
+                        id="file"
+                        name="file"
+                        type="file"
+                        className="file-input file-input-bordered file-input-ghost w-full"
+                        onBlur={formik.handleBlur}
+                        onChange={(event) => {
+                            formik.setFieldValue('file', event.currentTarget.files[0]);
+                        }}
+                        />
+                        {formik.touched.file && formik.errors.file ? (
+                        <div className="text-red-500 text-sm mt-1">{formik.errors.file}</div>
+                        ) : null}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Short Description</span>
+                        </label>
+                        <input
+                        id="short_description"
+                        name="short_description"
                         type="text"
-                        placeholder="Your address" 
+                        placeholder="Your pet short description" 
                         className="input input-bordered"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.address}
+                        value={formik.values.short_description}
                         />
-                        {formik.touched.address && formik.errors.address ? (
-                        <div className="text-red-500 text-sm mt-1">{formik.errors.address}</div>
+                        {formik.touched.short_description && formik.errors.short_description ? (
+                        <div className="text-red-500 text-sm mt-1">{formik.errors.short_description}</div>
+                        ) : null}
+                    </div>
+                    <div className="form-control md:col-span-2">
+                        <label className="label">
+                            <span className="label-text">Long Description</span>
+                        </label>
+                        <textarea
+                        id="long_description"
+                        name="long_description"
+                        placeholder="Your pet long description" 
+                        className="textarea textarea-bordered text-base h-36"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.long_description}
+                        />
+                        {formik.touched.long_description && formik.errors.long_description ? (
+                        <div className="text-red-500 text-sm mt-1">{formik.errors.long_description}</div>
                         ) : null}
                     </div>
                 </div>
                 <div className="modal-action flex justify-center pt-4">
-                    <button className="btn btn-primary md:text-base" type="submit">Submit</button>
+                    <button className="btn btn-primary md:text-base md:px-8" type="submit">Add pet</button>
                 </div>
             </form>
             </div>

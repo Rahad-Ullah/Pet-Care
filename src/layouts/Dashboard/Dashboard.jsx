@@ -12,7 +12,7 @@ const Dashboard = () => {
         <Navbar></Navbar>
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center h-screen bg-gray-50">
+            <div className="drawer-content flex flex-col items-center min-h-screen bg-gray-50">
                 {/* Page content here */}
                 <div className="w-full bg-white py-2 px-2 shadow fixed top-0 z-20 flex items-center lg:hidden">
                     <label htmlFor="my-drawer-2" className="btn btn-ghost btn-circle drawer-button"><FaBars className="text-xl"/></label>

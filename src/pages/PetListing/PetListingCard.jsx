@@ -7,7 +7,7 @@ const PetListingCard = ({pet}) => {
     return (
         <div className="p-4 border rounded-2xl shadow-[0px_8px_24px_rgba(149,157,165,0.2)] hover:shadow-[0px_48px_100px_0px_rgba(17,12,46,0.15)] transition-all">
             <figure>
-                <img src={image} alt="" className="rounded-t-2xl"/>
+                <img src={image} alt="" className="rounded-t-2xl object-cover md:h-56 lg:h-56 xl:h-72"/>
             </figure>
             <div className="flex justify-between my-4">
                 <p className="flex gap-2 items-center"><FaCalendarAlt className="text-primary "></FaCalendarAlt>{age} Years</p>
