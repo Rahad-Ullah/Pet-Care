@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import CreateCampaign from "../pages/Dashboard/User/CreateCampaign";
 import MyCampaigns from "../pages/Dashboard/User/MyCampaigns";
 import UpdateCampaign from "../pages/Dashboard/User/UpdateCampaign";
+import Campaigns from "../pages/Campaigns/Campaigns";
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
         {
           path: 'pet-details/:id',
           element: <PetDetails></PetDetails>
+        },
+        {
+          path: 'donation-campaigns',
+          element: <Campaigns></Campaigns>
+        },
+        {
+          path: 'campaign-details/:id',
+          element: <Campaigns></Campaigns>
         }
       ]
     },

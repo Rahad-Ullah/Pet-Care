@@ -8,7 +8,7 @@ const Navbar = () => {
     const links = <>
         <li className="hover:text-primary"><NavLink to={'/'} className={({isActive}) => isActive ? 'text-primary' : ''}>Home</NavLink></li>
         <li className="hover:text-primary"><NavLink to={'/pet-listing'} className={({isActive}) => isActive ? 'text-primary' : ''}>Pet Listing</NavLink></li>
-        <li className="hover:text-primary"><NavLink to={'/donation'} className={({isActive}) => isActive ? 'text-primary' : ''}>Donation Campaigns</NavLink></li>
+        <li className="hover:text-primary"><NavLink to={'/donation-campaigns'} className={({isActive}) => isActive ? 'text-primary' : ''}>Donation Campaigns</NavLink></li>
         {
             !user && <li><NavLink to={'/auth/login'} className={({isActive}) => isActive ? 'text-primary' : ''}>Login</NavLink></li>
         }

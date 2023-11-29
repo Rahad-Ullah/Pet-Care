@@ -55,6 +55,7 @@ const CreateCampaign = () => {
                 const campaignData = {
                     name: values.name,
                     maxAmount: values.maxAmount,
+                    donatedAmount: 0,
                     lastDate: values.lastDate,
                     image: res.data?.data?.display_url,
                     short_description: values.short_description,
