@@ -1,8 +1,8 @@
-import { FaBars, FaDonate, FaHome, FaList } from "react-icons/fa";
+import { FaBars, FaDonate, FaEdit, FaHome, FaList } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../../pages/shared/Navbar/Navbar";
 import "./Dashboard.css"
-import { IoPaw } from "react-icons/io5";
+import { IoCreateOutline, IoPaw } from "react-icons/io5";
 import { BsFiles } from "react-icons/bs";
 import { FaHandHoldingDollar } from "react-icons/fa6";
 
@@ -42,8 +42,11 @@ const Dashboard = () => {
                             <BsFiles className="text-lg"/> 
                             Adoption requests</NavLink></li>
                         <li><NavLink to={'/dashboard/create-campaign'} className={   ({isActive}) => isActive ? 'text-primary flex items-center gap-4' : 'text-gray-500 flex items-center gap-4'}>
-                            <FaHandHoldingDollar className="text-lg"/> 
+                            <FaEdit className="text-lg"/> 
                             Create donation campaign</NavLink></li>
+                        <li><NavLink to={'/dashboard/my-campaigns'} className={   ({isActive}) => isActive ? 'text-primary flex items-center gap-4' : 'text-gray-500 flex items-center gap-4'}>
+                            <FaHandHoldingDollar className="text-lg"/> 
+                            My donation campaigns</NavLink></li>
                         <li><NavLink to={'/dashboard/my-donations'} className={   ({isActive}) => isActive ? 'text-primary flex items-center gap-4' : 'text-gray-500 flex items-center gap-4'}>
                             <FaDonate className="text-lg"/> 
                             My donations</NavLink></li>

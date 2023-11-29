@@ -10,6 +10,7 @@ import Dashboard from "../layouts/Dashboard/Dashboard";
 import AddPet from "../pages/Dashboard/User/AddPet";
 import PrivateRoutes from "./PrivateRoutes";
 import CreateCampaign from "../pages/Dashboard/User/CreateCampaign";
+import MyCampaigns from "../pages/Dashboard/User/MyCampaigns";
 
 
 const router = createBrowserRouter([
@@ -70,8 +71,8 @@ const router = createBrowserRouter([
           element: <CreateCampaign></CreateCampaign>
         },
         {
-          path: 'my-donations',
-          element: <></>
+          path: 'my-campaigns',
+          element: <MyCampaigns></MyCampaigns>
         },
         {
           path: 'payment',
