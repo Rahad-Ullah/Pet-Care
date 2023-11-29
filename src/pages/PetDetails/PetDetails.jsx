@@ -11,9 +11,11 @@ import * as Yup from 'yup';
 import useAuth from "../../hooks/useAuth";
 import useDate from "../../hooks/useDate";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const PetDetails = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const petId = useParams().id;
     const {user} = useAuth()
@@ -21,7 +23,7 @@ const PetDetails = () => {
     const {data: pet={}} = useQuery({
         queryKey: ['pet', petId],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/pet?id=${petId}`)
+            const res = await axiosSecure.get(`/pet?id=${petId}`)
             return res.data;
         }
     })
