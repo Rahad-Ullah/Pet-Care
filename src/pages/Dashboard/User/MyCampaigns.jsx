@@ -7,11 +7,10 @@ import { Link } from "react-router-dom";
 const MyCampaigns = () => {
     const axiosSecure = useAxiosSecure()
     const [campaigns, refetch] = useCampaigns()
-    console.log(campaigns)
 
     const handleStatus = (campaign) => {
         const status = campaign.status;
-        axiosSecure.patch(`/campaigns?id=${campaign._id}`, {status: !status})
+        axiosSecure.patch(`/campaign-status?id=${campaign._id}`, {status: !status})
         .then(res => {
             console.log(res.data)
             if(res.data.modifiedCount > 0){
@@ -63,7 +62,7 @@ const MyCampaigns = () => {
                             }
                         </div>
                         <div className="md:col-span-1">
-                            <Link to={'/'} className="btn btn-ghost"><FaEdit className="text-xl"></FaEdit>
+                            <Link to={`/dashboard/update-campaign/${campaign._id}`} className="btn btn-ghost"><FaEdit className="text-xl"></FaEdit>
                             </Link>
                         </div>
                     </div>)

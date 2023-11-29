@@ -11,6 +11,7 @@ import AddPet from "../pages/Dashboard/User/AddPet";
 import PrivateRoutes from "./PrivateRoutes";
 import CreateCampaign from "../pages/Dashboard/User/CreateCampaign";
 import MyCampaigns from "../pages/Dashboard/User/MyCampaigns";
+import UpdateCampaign from "../pages/Dashboard/User/UpdateCampaign";
 
 
 const router = createBrowserRouter([
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
         {
           path: 'create-campaign',
           element: <CreateCampaign></CreateCampaign>
+        },
+        {
+          path: 'update-campaign/:id',
+          element: <UpdateCampaign></UpdateCampaign>
         },
         {
           path: 'my-campaigns',
