@@ -1,14 +1,12 @@
 
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import DashboardBack from "../../../components/DashboardBack";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import CustomSelect from "../../../components/CustomSelect";
 import useAuth from "../../../hooks/useAuth";
 import useDate from "../../../hooks/useDate";
 import useCurrentTime from "../../../hooks/useCurrentTime";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -109,9 +107,6 @@ const AddPet = () => {
     
     return (
         <div>
-            <div>
-                <DashboardBack></DashboardBack>
-            </div>
             <div className="bg-base-100 shadow-sm p-8 rounded-lg">
                 <h1 className="font-bold text-info text-3xl my-10 mt-6 text-center">Add a pet</h1>
             <form onSubmit={formik.handleSubmit} className="space-y-3">
