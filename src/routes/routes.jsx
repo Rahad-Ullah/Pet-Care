@@ -8,6 +8,7 @@ import PetListing from "../pages/PetListing/PetListing";
 import PetDetails from "../pages/PetDetails/PetDetails";
 import Dashboard from "../layouts/Dashboard/Dashboard";
 import AddPet from "../pages/Dashboard/User/AddPet";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const router = createBrowserRouter([
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'pet-details/:id',
-          element: <PetDetails></PetDetails>
+          element: <PrivateRoutes><PetDetails></PetDetails></PrivateRoutes>
         }
       ]
     },

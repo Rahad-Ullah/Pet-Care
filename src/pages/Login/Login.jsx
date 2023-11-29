@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import loginImg from "../../assets/bg-2.jpg"
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(false)
@@ -12,6 +13,7 @@ const Login = () => {
     const captchaRef = useRef()
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosPublic = useAxiosPublic()
     const {signIn, googleSignIn} = useAuth()
 
 
@@ -68,15 +70,30 @@ const Login = () => {
         .then(res => {
             console.log(res)
             // send user to server
-            // const userInfo = {
-            //     name: res.user?.displayName,
-            //     email: res.user?.email,
-            // }
-            // axiosPublic.post('/users', userInfo)
-            // .then(res => {
-            //     console.log(res.data)
-            //     navigate('/')
-            // })
+            const userInfo = {
+                name: res.user?.displayName,
+                email: res.user?.email,
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(res => {
+                console.log(res.data)
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login successful',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+                navigate(location?.state?.from?.pathname || '/')
+            })
+            .catch(err => {
+                console.log(err)
+                Swal.fire({
+                    title: 'Login Failed!',
+                    text: 'Invalid Email or Password',
+                    icon: 'error',
+                    confirmButtonText: 'Try again'
+                  })
+            })
         })
       }
 
