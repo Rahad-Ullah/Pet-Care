@@ -1,15 +1,14 @@
 
-const CategoryCard = ({category}) => {
-    const {name, image, recipe} = category;
+const CategoryCard = ({categoryItem}) => {
+    console.log(categoryItem)
     
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure><img src={image} alt="image" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{name}</h2>
-                <p>{recipe}</p>
-                <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+            <figure><img src={categoryItem?.image} alt="image" /></figure>
+            <div className="py-6 px-6">
+                <h2 className="card-title">{categoryItem?.category}</h2>
+                <div className="flex justify-center">
+                    <button className="btn btn-primary text-base">Learn More</button>
                 </div>
             </div>
         </div>
