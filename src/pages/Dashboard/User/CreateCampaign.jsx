@@ -97,12 +97,12 @@ const CreateCampaign = () => {
     return (
     <div>
         <div className="bg-base-100 shadow-sm p-8 rounded-lg">
-            <h1 className="font-bold text-info text-3xl my-10 mt-6 text-center">Add a Donation Campaign</h1>
+            <h1 className="font-bold text-info text-3xl my-10 mt-6 text-center">Create Donation Campaign</h1>
         <form onSubmit={formik.handleSubmit} className="space-y-3">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-3">
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text">Pet Name</span>
                     </label>
                     <input
                     id="name"
@@ -120,7 +120,7 @@ const CreateCampaign = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Image</span>
+                        <span className="label-text">Pet Image</span>
                     </label>
                     <input
                     id="file"

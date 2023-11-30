@@ -13,6 +13,9 @@ import CreateCampaign from "../pages/Dashboard/User/CreateCampaign";
 import MyCampaigns from "../pages/Dashboard/User/MyCampaigns";
 import UpdateCampaign from "../pages/Dashboard/User/UpdateCampaign";
 import Campaigns from "../pages/Campaigns/Campaigns";
+import CampaignDetails from "../pages/CampaignDetails/CampaignDetails";
+import MyDonations from "../pages/Dashboard/User/MyDonations";
+import AdoptionRequests from "../pages/Dashboard/User/AdoptionRequests";
 
 
 const router = createBrowserRouter([
@@ -38,7 +41,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'campaign-details/:id',
-          element: <Campaigns></Campaigns>
+          element: <CampaignDetails></CampaignDetails>
         }
       ]
     },
@@ -74,7 +77,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'requests',
-          element: <></>
+          element: <AdoptionRequests></AdoptionRequests>
         },
         {
           path: 'create-campaign',
@@ -89,8 +92,8 @@ const router = createBrowserRouter([
           element: <MyCampaigns></MyCampaigns>
         },
         {
-          path: 'payment',
-          element: <></>
+          path: 'my-donations',
+          element: <MyDonations></MyDonations>
         },
         {
           path: 'users',

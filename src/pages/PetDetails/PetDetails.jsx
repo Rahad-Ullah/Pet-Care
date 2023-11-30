@@ -27,7 +27,7 @@ const PetDetails = () => {
             return res.data;
         }
     })
-    const {name, age, category, image, location, short_description, long_description, adoption_date, adoption_time} = pet;
+    const {name, age, category, image, location, short_description, long_description, adoption_date, adoption_time, userEmail, userName} = pet;
 
     const today = useDate()
 
@@ -57,9 +57,11 @@ const PetDetails = () => {
                 adopterEmail: user?.email,
                 phone: values.phone,
                 address: values.address,
+                masterName: userName,
+                masterEmail: userEmail,
                 requestDate: today, 
             }
-            axiosPublic.post(`/adoption`, requestData)
+            axiosPublic.post(`/adoptions`, requestData)
             .then(res => {
                 if(res.data.message === 'success'){
                     toast.success('Request saved');

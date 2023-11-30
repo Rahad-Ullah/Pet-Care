@@ -32,7 +32,6 @@ const Campaigns = () => {
           .catch((err) => console.log(err));
       };
     
-    console.log(pets)
 
     
     return (

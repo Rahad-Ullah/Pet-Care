@@ -117,7 +117,7 @@ const UpdateCampaign = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-3">
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text">Pet Name</span>
                     </label>
                     <input
                     id="name"
@@ -135,7 +135,7 @@ const UpdateCampaign = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Image</span>
+                        <span className="label-text">Pet Image</span>
                     </label>
                     <input
                     id="file"

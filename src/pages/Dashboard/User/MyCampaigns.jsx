@@ -14,6 +14,7 @@ const MyCampaigns = () => {
         .then(res => {
             console.log(res.data)
             if(res.data.modifiedCount > 0){
+                refetch()
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -21,7 +22,6 @@ const MyCampaigns = () => {
                     showConfirmButton: false,
                     timer: 1500
                     });
-                    refetch()
             }
         })
     }
@@ -52,7 +52,7 @@ const MyCampaigns = () => {
                         <img src={campaign.image} alt="" className="h-14 w-14 rounded-full md:col-span-1"/>
                         <h4 className="md:col-span-3 ml-2">{campaign.name}</h4>
                         <div className="md:col-span-3 pr-3">
-                            <progress className="progress progress-primary md:col-span-3" value={30} max="100"></progress>
+                            <progress className="progress progress-primary md:col-span-3" value={campaign.donatedAmount} max={campaign.maxAmount}></progress>
                         </div>
                         <h4 className="md:col-span-2">{campaign.maxAmount}</h4>
                         <div className="md:col-span-2">
