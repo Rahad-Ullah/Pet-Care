@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const MyCampaigns = () => {
     const axiosSecure = useAxiosSecure()
     const [campaigns, refetch] = useCampaigns()
+    console.log(campaigns);
 
     const handleStatus = (campaign) => {
         const status = campaign.status;
@@ -52,7 +53,7 @@ const MyCampaigns = () => {
                         <img src={campaign.image} alt="" className="h-14 w-14 rounded-full md:col-span-1"/>
                         <h4 className="md:col-span-3 ml-2">{campaign.name}</h4>
                         <div className="md:col-span-3 pr-3">
-                            <progress className="progress progress-primary md:col-span-3" value={campaign.donatedAmount} max={campaign.maxAmount}></progress>
+                            <progress className="progress progress-primary md:col-span-3" value={parseInt(campaign.donatedAmount)} max={parseInt(campaign.maxAmount)}></progress>
                         </div>
                         <h4 className="md:col-span-2">{campaign.maxAmount}</h4>
                         <div className="md:col-span-2">
