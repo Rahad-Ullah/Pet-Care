@@ -3,17 +3,17 @@
 
 ## Features
 - **User Adoption Features:**
-Users can view available pets for adoption.
+Initiate and personalize donation campaigns for individual pets.
 Adoption seekers can submit adoption requests for pets.
 Users can add their pets to the adoption listing.
 Ability to manage and update pet adoption listings.
 
-- **Donation Campaigns:**
+- **Paws for a Cause:**
 Users can initiate donation campaigns for specific pets.
 Each pet can have its own dedicated fundraising campaign.
 Donation campaigns can be shared via social media for increased visibility.
 
-- **Payment System:**
+- **Secure Transactions with Stripe:**
 Integration with Stripe for secure payment processing.
 Users can make donations using MasterCard and VisaCard.
 Secure and encrypted transactions for financial transactions.
